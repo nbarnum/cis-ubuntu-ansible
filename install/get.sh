@@ -13,8 +13,7 @@ install_dependencies () {
   fi
 
   sudo apt-get install -y git python-dev python-pip
-  sudo -H pip install --upgrade pip
-  sudo -H pip install ansible markupsafe
+  sudo pip install ansible markupsafe
 }
 
 install_playbook () {
