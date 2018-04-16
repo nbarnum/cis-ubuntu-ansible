@@ -3,7 +3,7 @@
 set -o errexit
 
 install_dependencies () {
-  sudo apt-get update
+  sudo apt-get update -qq
 
   local_co=""
   if [ -z "$IP" ]; then
@@ -12,7 +12,7 @@ install_dependencies () {
     sudo apt-get install -y aptitude
   fi
 
-  sudo apt-get install -y python-pip git python-dev
+  sudo apt-get install -y git python-dev python-pip
   sudo -H pip install --upgrade pip
   sudo -H pip install ansible markupsafe
 }
@@ -21,7 +21,7 @@ install_playbook () {
   mkdir -p ansible/roles-ubuntu/roles
   cd ansible/roles-ubuntu
   if [ ! -e "roles/cis" ]; then
-    git clone https://github.com/nbarnum/cis-ubuntu-ansible.git roles/cis
+    git clone -b 17.10 https://github.com/nbarnum/cis-ubuntu-ansible.git roles/cis
   fi
 
   if [ ! -e "playbook.yml" ]; then

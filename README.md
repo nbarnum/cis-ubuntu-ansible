@@ -1,11 +1,11 @@
-# CIS for Ubuntu 16.04
+# CIS for Ubuntu 17.10
 
 Based on https://github.com/awailly/cis-ubuntu-ansible
 and Uber's mountopts https://github.com/Uberspace/ansible-mountopts
 
 ## Prerequisites
 
-The role is focused on hardening an Ubuntu 16.04 system. The minimum requirements of the targeted system are `ssh`, `aptitude` and `python2`; `ansible>=1.9` is required on your local system.
+The role is focused on hardening an Ubuntu 17.10 system. The minimum requirements of the targeted system are `ssh`, `aptitude` and `python2`; `ansible>=1.9` is required on your local system.
 
 ## Usage
 
@@ -14,18 +14,18 @@ The role is focused on hardening an Ubuntu 16.04 system. The minimum requirement
 The following will automatically install Ansible, download and run the playbook on your local system.
 
 ```
-$ \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/master/install/get.sh > /tmp/cis.sh && bash /tmp/cis.sh
+$ \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/17.10/install/get.sh > /tmp/cis.sh && bash /tmp/cis.sh
 ```
 
 To apply the playbook on a remote system:
 
 ```
-$ IP=[remote host's IP] USER=[remote user] \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/master/install/get.sh | bash
+$ IP=[remote host's IP] USER=[remote user] \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/17.10/install/get.sh | bash
 ```
 
 ### Manual installation
 
-Install dependencies on your host (on Ubuntu 16.04):
+Install dependencies on your host:
 
 ```bash
 $ sudo apt-get update
@@ -38,7 +38,7 @@ Create a placeholder to describe your machine:
 ```bash
 $ mkdir -p ansible/roles-ubuntu/roles
 $ cd ansible/roles-ubuntu
-$ git clone https://github.com/awailly/cis-ubuntu-ansible.git roles/cis
+$ git clone https://github.com/nbarnum/cis-ubuntu-ansible.git roles/cis
 ```
 
 Create a playbook in the _roles-ubuntu_ folder:

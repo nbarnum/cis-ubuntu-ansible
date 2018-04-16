@@ -7,16 +7,16 @@
       state: present
       create: yes
     with_items:
-      - 'deb http://archive.ubuntu.com/ubuntu/ xenial main restricted'
-      - 'deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted'
-      - 'deb http://archive.ubuntu.com/ubuntu/ xenial universe'
-      - 'deb http://archive.ubuntu.com/ubuntu/ xenial-updates universe'
-      - 'deb http://archive.ubuntu.com/ubuntu/ xenial multiverse'
-      - 'deb http://archive.ubuntu.com/ubuntu/ xenial-updates multiverse'
-      - 'deb http://archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse'
-      - 'deb http://security.ubuntu.com/ubuntu xenial-security main restricted'
-      - 'deb http://security.ubuntu.com/ubuntu xenial-security universe'
-      - 'deb http://security.ubuntu.com/ubuntu xenial-security multiverse'
+      - 'deb http://archive.ubuntu.com/ubuntu/ artful main restricted'
+      - 'deb http://archive.ubuntu.com/ubuntu/ artful-updates main restricted'
+      - 'deb http://archive.ubuntu.com/ubuntu/ artful universe'
+      - 'deb http://archive.ubuntu.com/ubuntu/ artful-updates universe'
+      - 'deb http://archive.ubuntu.com/ubuntu/ artful multiverse'
+      - 'deb http://archive.ubuntu.com/ubuntu/ artful-updates multiverse'
+      - 'deb http://archive.ubuntu.com/ubuntu/ artful-backports main restricted universe multiverse'
+      - 'deb http://security.ubuntu.com/ubuntu artful-security main restricted'
+      - 'deb http://security.ubuntu.com/ubuntu artful-security universe'
+      - 'deb http://security.ubuntu.com/ubuntu artful-security multiverse'
     tags:
       - section1
       - section1.2
