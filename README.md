@@ -1,11 +1,11 @@
-# CIS for Ubuntu 17.10
+# CIS for Ubuntu 18.04
 
 Based on https://github.com/awailly/cis-ubuntu-ansible
 and Uber's mountopts https://github.com/Uberspace/ansible-mountopts
 
 ## Prerequisites
 
-The role is focused on hardening an Ubuntu 17.10 system. The minimum requirements of the targeted system are `ssh`, `aptitude` and `python2`; `ansible>=1.9` is required on your local system.
+The role is focused on hardening an Ubuntu 18.04 system. The minimum requirements of the targeted system are `ssh`, `aptitude` and `python2`; `ansible>=1.9` is required on your local system.
 
 ## Usage
 
@@ -14,13 +14,13 @@ The role is focused on hardening an Ubuntu 17.10 system. The minimum requirement
 The following will automatically install Ansible, download and run the playbook on your local system.
 
 ```
-$ \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/17.10/install/get.sh > /tmp/cis.sh && bash /tmp/cis.sh
+$ \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/18.04/install/get.sh > /tmp/cis.sh && bash /tmp/cis.sh
 ```
 
 To apply the playbook on a remote system:
 
 ```
-$ IP=[remote host's IP] USER=[remote user] \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/17.10/install/get.sh | bash
+$ IP=[remote host's IP] USER=[remote user] \curl -sSL https://raw.githubusercontent.com/nbarnum/cis-ubuntu-ansible/18.04/install/get.sh | bash
 ```
 
 ### Manual installation

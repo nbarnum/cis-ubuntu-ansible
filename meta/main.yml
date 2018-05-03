@@ -11,7 +11,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        14.04
+        18.04
   categories:
     #- cloud
     #- cloud:ec2

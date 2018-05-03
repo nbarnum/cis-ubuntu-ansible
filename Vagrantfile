@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "bento/ubuntu-17.10"
+  config.vm.box = "bento/ubuntu-18.04"
   config.nfs.functional = false
 
   config.vm.provider "virtualbox" do |vb|

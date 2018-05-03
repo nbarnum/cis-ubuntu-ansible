@@ -1,5 +1,5 @@
 ---
 
-  - name: Check if OS is Ubuntu 17.10 artful
+  - name: Check if OS is Ubuntu 18.04 bionic
     debug: msg="Check OS"
-    failed_when: ansible_distribution != "Ubuntu" and ansible_distribution_version !="17.10"
+    failed_when: ansible_distribution != "Ubuntu" and ansible_distribution_version !="18.04"
