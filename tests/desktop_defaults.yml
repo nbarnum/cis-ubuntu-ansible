@@ -1,18 +1,3 @@
-# Desktop settings
-
-# don't disable wifi on laptop
-disable_wifi: False
-# set a reachable NTP server
-ntp_server: 0.north-america.pool.ntp.org
-
-# no root user ssh
-permit_root_login: no
-
-# don't remove xserver
+# We focus a server installation, but we may be accept some desktops.
 remove_xserver: False
-
-# we don't have a remote rsyslog to send logs to
-set_rsyslog_remote: False
-
-# don't set grub password
-set_bootloader_password: False
+disable_wifi: False

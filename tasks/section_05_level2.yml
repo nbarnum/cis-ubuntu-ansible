@@ -1,5 +1,16 @@
 ---
 
+  - command: dpkg-query -s openssh-server
+    register: openssh_server_installed
+    changed_when: False
+    failed_when: False
+    check_mode: no
+    tags:
+      - section5
+      - section5.2
+      - server_level_1
+      - workstation_level_1
+
   - name: 5.2.1 Ensure permissions on /etc/ssh/sshd_config are configured (Scored)
     file:
       path: /etc/ssh/sshd_config
@@ -7,120 +18,153 @@
       group: root
       mode: 0600
       state: file
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.2 Ensure SSH Protocol is set to 2 (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^Protocol'
       line: 'Protocol 2'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.3 Ensure SSH LogLevel is set to INFO (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^LogLevel'
       line: 'LogLevel INFO'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.4 Ensure SSH X11 forwarding is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^X11Forwarding'
       line: 'X11Forwarding no'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.4
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.5 Ensure SSH MaxAuthTries is set to 4 or less (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^MaxAuthTries'
       line: 'MaxAuthTries 4'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.5
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.6 Ensure SSH IgnoreRhosts is enabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^IgnoreRhosts'
       line: 'IgnoreRhosts yes'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.6
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.7 Ensure SSH HostbasedAuthentication is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^HostbasedAuthentication'
       line: 'HostbasedAuthentication no'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.7
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.8 Ensure SSH root login is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^PermitRootLogin'
       line: 'PermitRootLogin {{ permit_root_login }}'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.8
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.9 Ensure SSH PermitEmptyPasswords is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^PermitEmptyPasswords'
       line: 'PermitEmptyPasswords no'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.9
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.10 Ensure SSH PermitUserEnvironment is disabled (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^PermitUserEnvironment'
       line: 'PermitUserEnvironment no'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.10
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.11 Ensure only approved MAC algorithms are used (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       line: 'MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.11
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.12 Ensure SSH Idle Timeout Interval is configured (Scored)
     lineinfile:
@@ -130,28 +174,35 @@
     with_items:
       - { name: 'ClientAliveInterval' , value: '300' }
       - { name: 'ClientAliveCountMax' , value: '0' }
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.12
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.13 Ensure SSH LoginGraceTime is set to one minute or less (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^LoginGraceTime'
       line: 'LoginGraceTime 60'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.13
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.14 Ensure SSH access is limited (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^{{item.name}}'
       line: '{{item.name}} {{item.value}}'
+    when: openssh_server_installed.rc == 0 and sshd_restrict_users_and_groups == True
     with_items:
       - { name: 'AllowUsers' , value: '{{ sshd_allow_users }}' }
       - { name: 'AllowGroups' , value: '{{ sshd_allow_groups }}' }
@@ -162,14 +213,19 @@
       - section5
       - section5.2
       - section5.2.14
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.2.15 Ensure SSH warning banner is configured (Scored)
     lineinfile:
       dest: /etc/ssh/sshd_config
       regexp: '^Banner'
       line: 'Banner /etc/issue.net'
+    when: openssh_server_installed.rc == 0
     notify: restart ssh
     tags:
       - section5
       - section5.2
       - section5.2.15
+      - server_level_1
+      - workstation_level_1

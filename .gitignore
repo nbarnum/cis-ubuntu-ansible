@@ -58,3 +58,6 @@ target/
 site/
 
 .idea
+
+# Vagrant
+.vagrant/

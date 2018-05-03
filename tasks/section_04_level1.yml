@@ -8,9 +8,11 @@
       - section4
       - section4.1
       - section4.1.1.1
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.1.1 Ensure audit log storage size is configured (Not Scored)
-    lineinfile: 
+    lineinfile:
         dest: /etc/audit/auditd.conf
         line: 'max_log_file = {{max_log_file_auditd}}'
         state: present
@@ -20,6 +22,8 @@
       - section4
       - section4.1
       - section4.1.1.1
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.1.2 Ensure system is disabled when audit logs are full (Scored)
     lineinfile:
@@ -28,7 +32,7 @@
         state: present
         create: yes
     with_items:
-        - { name: 'space_left_action' , value: 'email' } 
+        - { name: 'space_left_action' , value: 'email' }
         - { name: 'action_mail_acct' , value: 'root' }
         - { name: 'admin_space_left_action' , value: 'halt' }
     when: enable_auditd == True
@@ -36,6 +40,8 @@
       - section4
       - section4.1
       - section4.1.1.2
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.1.3 Ensure audit logs are not automatically deleted (Scored)
     lineinfile:
@@ -48,6 +54,8 @@
       - section4
       - section4.1
       - section4.1.1.3
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.2 Ensure auditd service is enabled (Scored)
     service:
@@ -58,6 +66,8 @@
       - section4
       - section4.1
       - section4.1.2
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.3 Ensure auditing for processes that start prior to auditd is enabled (Scored)
     lineinfile:
@@ -67,9 +77,11 @@
       - section4
       - section4.1
       - section4.1.3
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.4 Ensure events that modify date and time information are collected (Scored)
-    lineinfile: 
+    lineinfile:
       dest: /etc/audit/audit.rules
       line: ' {{ item }} '
       state: present
@@ -86,13 +98,15 @@
       - section4
       - section4.1
       - section4.1.4
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.5 Ensure events that modify user/group information are collected (Scored)
     lineinfile:
       dest: /etc/audit/audit.rules
       line: ' {{ item }} '
       state: present
-      create: yes    
+      create: yes
     with_items:
       - '-w /etc/group -p wa -k identity'
       - '-w /etc/passwd -p wa -k identity'
@@ -105,6 +119,8 @@
       - section4
       - section4.1
       - section4.1.5
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.6 Ensure events that modify the system's network environment are collected (Scored)
     lineinfile:
@@ -126,6 +142,8 @@
       - section4
       - section4.1
       - section4.1.6
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.7 Ensure events that modify the system's Mandatory Access Controls are collected (Scored)
     lineinfile:
@@ -143,6 +161,8 @@
       - section4
       - section4.1
       - section4.1.7
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.8 Ensure login and logout events are collected (Scored)
     lineinfile:
@@ -160,6 +180,8 @@
       - section4
       - section4.1
       - section4.1.8
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.9 Ensure session initiation information is collected (Scored)
     lineinfile:
@@ -177,6 +199,8 @@
       - section4
       - section4.1
       - section4.1.9
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.10 Ensure discretionary access control permission modification events are collected (Scored)
     lineinfile:
@@ -190,13 +214,15 @@
       - '-a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'
       - '-a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=1000 -F auid!=4294967295 -k perm_mod'
       - '-a always,exit -F arch=b64 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=1000 -F auid!=4294967295 -k perm_mod'
-      - '-a always,exit -F arch=b32 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=1000 -F auid!=4294967295 -k perm_mod' 
+      - '-a always,exit -F arch=b32 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=1000 -F auid!=4294967295 -k perm_mod'
     when: enable_auditd == True
     notify: restart auditd
     tags:
       - section4
       - section4.1
       - section4.1.10
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.11 Ensure unsuccessful unauthorized file access attempts are collected (Scored)
     lineinfile:
@@ -215,6 +241,8 @@
       - section4
       - section4.1
       - section4.1.11
+      - server_level_2
+      - workstation_level_2
 
   - shell: "find / -path /sys -prune -o -path /proc -prune -o -path /run -prune -o \\( -perm -4000 -o -perm -2000 \\) -type f|egrep -v '/sys|/proc|/run'"
     register: setuid_setgid_commands
@@ -223,6 +251,8 @@
       - section4
       - section4.1
       - section4.1.12
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.12 Ensure use of privileged commands is collected (Scored)
     lineinfile:
@@ -232,7 +262,7 @@
       create: yes
     with_items: "{{ setuid_setgid_commands.stdout_lines }}"
     when: enable_auditd == True
-    notify: restart auditd    
+    notify: restart auditd
     tags:
       - section4
       - section4.1
@@ -253,6 +283,8 @@
       - section4
       - section4.1
       - section4.1.13
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.14 Ensure file deletion events by users are collected (Scored)
     lineinfile:
@@ -269,6 +301,8 @@
       - section4
       - section4.1
       - section4.1.14
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.15 Ensure changes to system administration scope (sudoers) is collected (Scored)
     lineinfile:
@@ -285,6 +319,8 @@
       - section4
       - section4.1
       - section4.1.15
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.16 Ensure system administrator actions (sudolog) are collected (Scored)
     lineinfile:
@@ -298,6 +334,8 @@
       - section4
       - section4.1
       - section4.1.16
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.17 Ensure kernel module loading and unloading is collected (Scored)
     lineinfile:
@@ -316,6 +354,8 @@
       - section4
       - section4.1
       - section4.1.17
+      - server_level_2
+      - workstation_level_2
 
   - name: 4.1.18 Ensure the audit configuration is immutable (Scored)
     lineinfile:
@@ -329,3 +369,5 @@
       - section4
       - section4.1
       - section4.1.18
+      - server_level_2
+      - workstation_level_2

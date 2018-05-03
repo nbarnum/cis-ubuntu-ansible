@@ -10,6 +10,8 @@
       - section2
       - section2.1
       - section2.1.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.1 Ensure chargen services are not enabled (Scored)
     lineinfile:
@@ -21,6 +23,8 @@
       - section2
       - section2.1
       - section2.1.1
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/daytime
@@ -32,6 +36,8 @@
       - section2
       - section2.1
       - section2.1.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.2 Ensure daytime services are not enabled (Scored)
     lineinfile:
@@ -43,6 +49,8 @@
       - section2
       - section2.1
       - section2.1.2
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/discard
@@ -54,6 +62,8 @@
       - section2
       - section2.1
       - section2.1.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.3 Ensure discard services are not enabled (Scored)
     lineinfile:
@@ -65,6 +75,8 @@
       - section2
       - section2.1
       - section2.1.3
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/echo
@@ -76,6 +88,8 @@
       - section2
       - section2.1
       - section2.1.4
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.4 Ensure echo services are not enabled (Scored)
     lineinfile:
@@ -87,6 +101,8 @@
       - section2
       - section2.1
       - section2.1.4
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/time
@@ -98,6 +114,8 @@
       - section2
       - section2.1
       - section2.1.5
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.5 Ensure time services are not enabled (Scored)
     lineinfile:
@@ -109,6 +127,8 @@
       - section2
       - section2.1
       - section2.1.5
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/rsh
@@ -120,6 +140,8 @@
       - section2
       - section2.1
       - section2.1.6
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.6 Ensure rsh server is not enabled (Scored)
     lineinfile:
@@ -131,6 +153,8 @@
       - section2
       - section2.1
       - section2.1.6
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/talk
@@ -142,6 +166,8 @@
       - section2
       - section2.1
       - section2.1.7
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.7 Ensure talk server is not enabled (Scored)
     lineinfile:
@@ -153,6 +179,8 @@
       - section2
       - section2.1
       - section2.1.7
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/telnet
@@ -164,6 +192,8 @@
       - section2
       - section2.1
       - section2.1.8
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.8 Ensure telnet server is not enabled (Scored)
     lineinfile:
@@ -175,6 +205,8 @@
       - section2
       - section2.1
       - section2.1.8
+      - server_level_1
+      - workstation_level_1
 
   - stat:
       path: /etc/xinetd.d/tftp
@@ -186,6 +218,8 @@
       - section2
       - section2.1
       - section2.1.9
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.9 Ensure tftp server is not enabled (Scored)
     lineinfile:
@@ -197,6 +231,8 @@
       - section2
       - section2.1
       - section2.1.9
+      - server_level_1
+      - workstation_level_1
 
   - command: dpkg -l xinetd
     register: xinetd_installed
@@ -207,6 +243,8 @@
       - section2
       - section2.1
       - section2.1.10
+      - server_level_1
+      - workstation_level_1
 
   - name: 2.1.10 Ensure xinetd is not enabled (Scored)
     systemd:
@@ -217,3 +255,29 @@
       - section2
       - section2.1
       - section2.1.10
+      - server_level_1
+      - workstation_level_1
+
+  - command: dpkg -l openbsd-inetd
+    register: openbsd_inetd_installed
+    failed_when: False
+    ignore_errors: True
+    changed_when: False
+    tags:
+      - section2
+      - section2.1
+      - section2.1.11
+      - server_level_1
+      - workstation_level_1
+
+  - name: 2.1.11 Ensure openbsd-inetd is not installed (Scored)
+    apt:
+      name: openbsd-inetd
+      state: absent
+    when: openbsd_inetd_installed.rc == 0
+    tags:
+      - section2
+      - section2.1
+      - section2.1.11
+      - server_level_1
+      - workstation_level_1

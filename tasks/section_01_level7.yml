@@ -10,6 +10,8 @@
       - section1
       - section1.7
       - section1.7.1.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.1.2 Ensure local login warning banner is configured properly (Not Scored)
     shell: egrep '(\\v|\\r|\\m|\\s)' /etc/issue
@@ -20,6 +22,8 @@
       - section1
       - section1.7
       - section1.7.1.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.1.3 Ensure remote login warning banner is configured properly (Not Scored)
     shell: egrep '(\\v|\\r|\\m|\\s)' /etc/issue.net
@@ -30,28 +34,34 @@
       - section1
       - section1.7
       - section1.7.1.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.1.4 Ensure permissions on /etc/motd are configured (Not Scored)
     file:
       path: /etc/motd
       owner: root
-      group: root 
+      group: root
       mode: 0644
     tags:
       - section1
       - section1.7
       - section1.7.1.4
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.1.5 Ensure permissions on /etc/issue are configured (Scored)
-    file: 
+    file:
       path: /etc/issue
-      owner: root 
-      group: root 
+      owner: root
+      group: root
       mode: 0644
     tags:
       - section1
       - section1.7
       - section1.7.1.5
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.1.6 Ensure permissions on /etc/issue.net are configured (Not Scored)
     file:
@@ -62,16 +72,20 @@
     tags:
       - section1
       - section1.7
-      - section1.7.1.7
+      - section1.7.1.6
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.2 Ensure GDM login banner is configured (Scored)
     stat:
       path: /etc/dconf/profile/gdm
-    register: gdm_rule 
+    register: gdm_rule
     tags:
       - section1
       - section1.7
       - section1.7.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.2 Ensure GDM login banner is configured (Scored)
     lineinfile:
@@ -81,11 +95,13 @@
       - { regexp: '^user-db:user' }
       - { regexp: '^system-db:gdm' }
       - { regexp: '^file-db:/usr/share/gdm/greeter-dconf-defaults' }
-    when: gdm_rule.stat.exists == True 
+    when: gdm_rule.stat.exists == True
     tags:
       - section1
       - section1.7
       - section1.7.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.7.2 Ensure GDM login banner is configured (Scored)
     lineinfile:
@@ -96,8 +112,10 @@
       - { regexp: '^[org/gnome/login-screen]' }
       - { regexp: '^banner-message-enable=true' }
       - { regexp: '^banner-message-text="Authorized uses only. All activity may be monitored and reported."^\' }
-    when: gdm_rule.stat.exists == True 
+    when: gdm_rule.stat.exists == True
     tags:
       - section1
       - section1.7
       - section1.7.2
+      - server_level_1
+      - workstation_level_1

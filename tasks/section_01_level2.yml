@@ -21,6 +21,8 @@
       - section1
       - section1.2
       - section1.2.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.2.2 Ensure GPG keys are configured (Not Scored)
     lineinfile:
@@ -32,3 +34,5 @@
       - section1
       - section1.2
       - section1.2.2
+      - server_level_1
+      - workstation_level_1

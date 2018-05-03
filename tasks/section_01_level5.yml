@@ -8,6 +8,8 @@
       - section1
       - section1.5
       - section1.5.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.5.1 Ensure core dumps are restricted (Scored)
     lineinfile:
@@ -20,6 +22,8 @@
       - section1
       - section1.5
       - section1.5.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.5.1 Ensure core dumps are restricted (Scored)
     sysctl:
@@ -31,6 +35,8 @@
       - section1
       - section1.5
       - section1.5.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.5.2 Ensure XD/NX support is enabled (Not Scored)
     shell: 'dmesg | grep NX'
@@ -42,6 +48,8 @@
       - section1
       - section1.5
       - section1.5.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.5.3 Ensure address space layout randomization (ASLR) is enabled (Scored)
     sysctl:
@@ -53,6 +61,8 @@
       - section1
       - section1.5
       - section1.5.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.5.4 Ensure prelink is disabled (Scored)
     apt:
@@ -62,3 +72,5 @@
       - section1
       - section1.5
       - section1.5.4
+      - server_level_1
+      - workstation_level_1

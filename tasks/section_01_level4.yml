@@ -10,16 +10,20 @@
       - section1
       - section1.4
       - section1.4.1
+      - server_level_1
+      - workstation_level_1
 
   - command: grep "^password" /boot/grub/grub.cfg
     register: boot_password
     failed_when: false
-    ignore_errors: yes 
+    ignore_errors: yes
     changed_when: False
     tags:
       - section1
       - section1.4
       - section1.4.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.4.2 Ensure bootloader password is set (Scored)
     lineinfile:
@@ -36,6 +40,8 @@
       - section1
       - section1.4
       - section1.4.2
+      - server_level_1
+      - workstation_level_1
 
   - command: grep "^root:[*\!]:" /etc/shadow
     register: root_password_set
@@ -46,6 +52,8 @@
       - section1
       - section1.4
       - section1.4.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 1.4.3 Ensure authentication required for single user mode (Scored)
     user:
@@ -57,3 +65,5 @@
       - section1
       - section1.4
       - section1.4.3
+      - server_level_1
+      - workstation_level_1

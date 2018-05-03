@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "bento/ubuntu-17.10"
   config.nfs.functional = false
 
   config.vm.provider "virtualbox" do |vb|
@@ -39,6 +39,6 @@ EOF
 
   config.vm.provision "run", type: "shell", inline: <<-SHELL
     cd /home/vagrant/ansible/roles-ubuntu
-    ansible-playbook -b -u vagrant -i '127.0.0.1,' playbook.yml
+    ansible-playbook --tags "server_level_1,server_level_2" -b -u vagrant -i '127.0.0.1,' playbook.yml
   SHELL
 end

@@ -8,6 +8,8 @@
       - section3
       - section3.4
       - section3.4.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 3.4.2 Ensure /etc/hosts.allow is configured (Scored)
     lineinfile:
@@ -18,6 +20,8 @@
       - section3
       - section3.4
       - section3.4.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 3.4.3 Ensure /etc/hosts.deny is configured (Scored)
     lineinfile:
@@ -28,6 +32,8 @@
       - section3
       - section3.4
       - section3.4.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 3.4.4 Ensure permissions on /etc/hosts.allow are configured (Scored)
     file:
@@ -38,7 +44,9 @@
     tags:
       - section3
       - section3.4
-      - section3.4.5
+      - section3.4.4
+      - server_level_1
+      - workstation_level_1
 
   - name: 3.4.5 Ensure permissions on /etc/hosts.deny are 644 (Scored)
     file:
@@ -50,3 +58,5 @@
       - section3
       - section3.4
       - section3.4.5
+      - server_level_1
+      - workstation_level_1

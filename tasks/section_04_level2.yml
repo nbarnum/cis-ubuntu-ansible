@@ -8,6 +8,8 @@
       - section4
       - section4.2
       - section4.2.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.1.1 Ensure rsyslog Service is enabled (Scored)
     service:
@@ -19,6 +21,8 @@
       - section4
       - section4.2
       - section4.2.1.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.1.2 Ensure logging is configured (Not Scored)
     lineinfile:
@@ -47,6 +51,8 @@
       - section4
       - section4.2
       - section4.2.1.2
+      - server_level_1
+      - workstation_level_1
 
   - command: find /etc/rsyslog.d -type f
     register: rsyslog_files
@@ -55,11 +61,13 @@
       - section4
       - section4.2
       - section4.2.1.3
+      - server_level_1
+      - workstation_level_1
 
   - command: grep ^\\$FileCreateMode {{ item }}
     with_items:
       - '/etc/rsyslog.conf'
-      - '{{ rsyslog_files.stdout_lines }}'    
+      - '{{ rsyslog_files.stdout_lines }}'
     register: filecreate_exists
     ignore_errors: True
     notify: restart rsyslog
@@ -68,6 +76,8 @@
       - section4
       - section4.2
       - section4.2.1.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.1.3 Ensure rsyslog default file permissions configured (Scored)
     lineinfile:
@@ -83,6 +93,8 @@
       - section4
       - section4.2
       - section4.2.1.3
+      - server_level_1
+      - workstation_level_1
 
   - command: grep "^*.*[^I][^I]*@" /etc/rsyslog.conf
     register: remoteloghost
@@ -93,6 +105,8 @@
       - section4
       - section4.2
       - section4.2.1.4
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.1.4 Ensure rsyslog is configured to send logs to a remote log host (Scored)
     lineinfile:
@@ -106,6 +120,8 @@
       - section4
       - section4.2
       - section4.2.1.4
+      - server_level_1
+      - workstation_level_1
 
   - command: grep '^$ModLoad imtcp' /etc/rsyslog.conf
     register: moadloadpresent
@@ -115,6 +131,8 @@
       - section4
       - section4.2
       - section4.2.1.5
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.1.5 Ensure remote rsyslog messages are only accepted on designated log hosts. (Not Scored)
     lineinfile:
@@ -131,6 +149,8 @@
       - section4
       - section4.2
       - section4.2.1.5
+      - server_level_1
+      - workstation_level_1
 
   - command: dpkg-query -s syslog-ng
     register: syslognginstalled
@@ -141,6 +161,8 @@
       - section4
       - section4.2
       - section4.2.2.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.2.1 Ensure syslog-ng service is enabled (Scored)
     service:
@@ -151,6 +173,8 @@
       - section4
       - section4.2
       - section4.2.2.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.2.2 Ensure logging is configured (Not Scored)
     lineinfile:
@@ -182,6 +206,8 @@
       - section4
       - section4.2
       - section4.2.2.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.2.3 Ensure syslog-ng default file permissions configured (Scored)
     lineinfile:
@@ -194,6 +220,8 @@
       - section4
       - section4.2
       - section4.2.2.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.2.4 Ensure syslog-ng is configured to send logs to a remote log host (Scored)
     lineinfile:
@@ -206,6 +234,8 @@
       - section4
       - section4.2
       - section4.2.2.4
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.2.5 Ensure remote syslog-ng messages are only accepted on designated log hosts (Not Scored)
     lineinfile:
@@ -222,6 +252,8 @@
       - section4
       - section4.2
       - section4.2.2.5
+      - server_level_1
+      - workstation_level_1
 
   - name: 4.2.4 Ensure permissions on all logfiles are configured (Scored)
     shell: chmod -R g-wx,o-rwx /var/log/*
@@ -229,3 +261,5 @@
       - section4
       - section4.2
       - section4.2.4
+      - server_level_1
+      - workstation_level_1

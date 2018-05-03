@@ -9,6 +9,8 @@
       - section5
       - section5.1
       - section5.1.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.1.2 Ensure permissions on /etc/crontab are configured (Scored)
     file:
@@ -20,6 +22,8 @@
       - section5
       - section5.1
       - section5.1.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.1.3 Ensure permissions on /etc/cron.hourly are configured (Scored)
     file:
@@ -31,6 +35,8 @@
       - section5
       - section5.1
       - section5.1.3
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.1.4 Ensure permissions on /etc/cron.daily are configured (Scored)
     file:
@@ -42,6 +48,8 @@
       - section5
       - section5.1
       - section5.1.4
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.1.5 Ensure permissions on /etc/cron.weekly are configured (Scored)
     file:
@@ -53,6 +61,8 @@
       - section5
       - section5.1
       - section5.1.5
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.1.6 Ensure permissions on /etc/cron.monthly are configured (Scored)
     file:
@@ -64,6 +74,8 @@
       - section5
       - section5.1
       - section5.1.6
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.1.7 Ensure permissions on /etc/cron.d are configured (Scored)
     file:
@@ -77,6 +89,8 @@
       - section5
       - section5.1
       - section5.1.7
+      - server_level_1
+      - workstation_level_1
 
   - name: 5.1.8 Ensure at/cron is restricted to authorized users (Scored)
     file:
@@ -94,3 +108,5 @@
       - section5
       - section5.1
       - section5.1.8
+      - server_level_1
+      - workstation_level_1

@@ -9,6 +9,8 @@
       - section3
       - section3.1
       - section3.1.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 3.1.2 Ensure packet redirect sending is disabled (Scored)
     sysctl:
@@ -19,3 +21,5 @@
       - section3
       - section3.1
       - section3.1.2
+      - server_level_1
+      - workstation_level_1

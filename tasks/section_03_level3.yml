@@ -9,6 +9,8 @@
       - section3
       - section3.3
       - section3.3.1
+      - server_level_1
+      - workstation_level_1
 
   - name: 3.3.2 Ensure IPv6 redirects are not accepted (Not Scored)
     sysctl:
@@ -19,6 +21,8 @@
       - section3
       - section3.3
       - section3.3.2
+      - server_level_1
+      - workstation_level_1
 
   - name: 3.3.3 Ensure IPv6 is disabled (Not Scored)
     sysctl:
@@ -34,3 +38,5 @@
       - section3
       - section3.3
       - section3.3.3
+      - server_level_1
+      - workstation_level_1
